@@ -1,0 +1,54 @@
+Script started on Sun 09 Dec 2018 10:57:53 PM PST
+[rmagdalu@zuma hw5]$ make
+gcc -Wall -ansi -std=c99 -c MovieLab.c -o MovieLab.o
+gcc -Wall -ansi -std=c99 -c Movie.c -o Movie.o 
+gcc -g -DDEBUG  -Wall -ansi -std=c99 -c MovieIO.c -o MovieIO.o
+gcc -g -DDEBUG  -Wall -ansi -std=c99 -c FileIO.c -o FileIO.o
+gcc -Wall -ansi -std=c99 -c Image.c -o Image.o
+gcc -Wall -ansi -std=c99 -c ImageList.c -o ImageList.o
+gcc -Wall -ansi -std=c99 -c DIPs.c -o DIPs.o
+gcc -Wall -ansi -std=c99 -c IterativeFilter.c -o IterativeFilter.o
+ar rc libFilter.a DIPs.o
+ranlib libFilter.a
+gcc -g -DDEBUG  -Wall MovieLab.o Movie.o MovieIO.o FileIO.o Image.o ImageList.o DIPs.o IterativeFilter.o -lm -L. -lFilter -o MovieLab
+[rmagdalu@zuma hw5]$ ./Moviel[KLAb [K[Kab -i HSSOE.ppm -o test.yuv start= 0 -end= 5 -step= 0.5 -hue
+Current imageFileName: HSSOE.ppm
+Current movieOutFileName: test.yuv
+Unknown option start=!
+Options: MovieLab [option]
+-------------------------------------
+Option:         Function:
+-h              Display options menu
+-f <frameNum>   Number of frames in the input move
+-i <file.ppm>   Import an image in .ppm format
+-m <file.yuv>   Import a movie in .yuv format
+-o <file.yuv>   Export a movie in .yuv format
+-s <WxH>        Size of a movie frame (Width x Height)
+-reverse        Reverse the movie
+-hue            Apply an iterative hue filter on the image to create a movie 
+[rmagdalu@zuma hw5]$ ./MovieLab -i HSSOE.ppm -o test.yuv start= 0 -end= 5 -step= 0.5 -hue[4h-[4l
+Current imageFileName: HSSOE.ppm
+Current movieOutFileName: test.yuv
+Start percentage: 0.00
+End percentage: 5.00
+Step percentage: 0.50
+HSSOE.ppm was read successfully!
+The movie file test.yuv has been written successfully!
+11 frames are written to the file test.yuv in total.
+[rmagdalu@zuma hw5]$ ./MovieLab -m hue.yuv -o reverse.yuv -f 73 0s[K[K- s[Ks 2[K300x200 -reverse
+Current movieInFileName: hue.yuv
+Current movieOutFileName: reverse.yuv
+Number of frames: 73
+x location: 3
+Frame width: 300
+Frame height: 200
+The movie file hue.yuv has been read successfully!
+The movie file reverse.yuv has been written successfully!
+73 frames are written to the file reverse.yuv in total.
+[rmagdalu@zuma hw5]$ make clean
+rm -f *.o *.a MovieLab `find . -name '*.ppm' ! -name 'HSSOE.ppm'`
+rm reverse.yuv test.yuv
+[rmagdalu@zuma hw5]$ exit
+exit
+
+Script done on Sun 09 Dec 2018 10:58:52 PM PST

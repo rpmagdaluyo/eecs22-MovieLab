@@ -1,0 +1,3 @@
+In my MovieLab program, I've implemented input output and reverse. The issue is that there are a lot of memory leaks from a number of sources (input and output functions). I also have what appears to be a version of IterativeFilter that writes the correct number of frames but it doesn't play properly. I suspect that RBG2YUVMovie is the issue. There are still quite a lot of loose ends that need to be tied in this project.
+
+Some of the main challenges from this lab were understanding how linked lists are structured and how to modify and access the correct information. The other thing was parsing the arguments to store the correct values (i.e. storing int and float values from a string). 
